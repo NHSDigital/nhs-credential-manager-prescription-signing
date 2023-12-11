@@ -8,6 +8,6 @@ export function validateHubResponse(hubResponse: HubResponse) {
 
     if (!hubResponse.certificate || !hubResponse.signatures.length) {
         console.log("Got invalid response from Credential Management: ${JSON.stringify(hubResponse)}");
-        throw new TypeError("Invalid response from Credential Management.");
+        throw new TypeError("Invalid response from Credential Management.")
     }
 }

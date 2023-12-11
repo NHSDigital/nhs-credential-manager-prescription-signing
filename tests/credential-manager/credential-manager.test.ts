@@ -33,7 +33,7 @@ describe("Credential Manager Tests", () => {
         //then
         expect(mockHubConnection.mock?.calls.length).toBe(1);
         expect(mockConnection.createHubProxy.mock.calls.length).toBe(1);
-        expect(mockConnection.start.mock.calls.length).toBe(1);
+        expect(mockConnection.start.mock.calls.length).toBe(1)
     });
 
     it("Should return signed JWT", async () => {
