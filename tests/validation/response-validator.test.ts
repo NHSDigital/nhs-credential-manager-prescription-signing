@@ -1,37 +1,7 @@
 import {validateHubResponse} from "../../src/validation/response-validator";
 import {HubResponse} from "../../src/model/hub-response";
 import {Signature} from "../../src/model/signature";
-
-class TestSignature implements Signature {
-    id: string;
-    signature: string;
-
-    constructor() {
-        this.id = "id"
-        this.signature = "signature"
-    }
-}
-
-class TestHubResponse implements HubResponse {
-
-    certificate: string;
-    failed_signatures: Array<Signature>;
-    message: string;
-    signatures: Array<Signature>;
-    status_code: number;
-    status_string: string;
-    timestamp: string;
-
-    constructor() {
-        this.certificate = "certificate";
-        this.failed_signatures = [];
-        this.message = "message";
-        this.signatures = [new TestSignature()];
-        this.status_code = 0;
-        this.status_string = "status_string";
-        this.timestamp = "timestamp";
-    }
-}
+import {TestHubResponse} from "../model/test-hub-response";
 
 describe('Response Validator tests', () => {
 

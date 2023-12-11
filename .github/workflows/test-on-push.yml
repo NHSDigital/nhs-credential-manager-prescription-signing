@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Test & Coverage
 
 on: [create, push, pull_request]
 
