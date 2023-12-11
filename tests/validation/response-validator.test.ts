@@ -1,6 +1,4 @@
 import {validateHubResponse} from "../../src/validation/response-validator";
-import {HubResponse} from "../../src/model/hub-response";
-import {Signature} from "../../src/model/signature";
 import {TestHubResponse} from "../model/test-hub-response";
 
 describe('Response Validator tests', () => {
