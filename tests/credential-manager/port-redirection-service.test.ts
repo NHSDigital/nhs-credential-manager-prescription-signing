@@ -21,11 +21,11 @@ describe("Port Redirection Service tests", () => {
         });
 
         input.failurePorts.forEach(port => {
-            mockAxios.onGet(`http://localhost:${port}/PRS/GetPortNumber`).reply(404)
+            mockAxios.onGet(`http://localhost:${port}/PRS/GetPortNumber`).reply(404);
         });
 
         // when
-        let response = await prs.locateService();
+        const response = await prs.locateService();
 
         // then
         expect(response.portData.portNumber).toBe(input.expectedPortNumber);

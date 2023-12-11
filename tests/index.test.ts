@@ -14,7 +14,7 @@ jest.mock("../src/credential-manager/port-redirection-service", () => {
                 locateService: () => {
                     return new Promise(resolve => {
                         resolve(new PortResponse(new PortData(123)));
-                    })
+                    });
                 },
             };
         })
@@ -25,10 +25,10 @@ jest.mock("../src/credential-manager/credential-manager", () => {
         CredentialManager: jest.fn().mockImplementation(() => {
             return {
                 initialise: () => {
-                    return new Promise<void>(resolve => resolve())
+                    return new Promise<void>(resolve => resolve());
                 },
                 signJwt: () => {
-                    return new Promise<HubResponse>(resolve => resolve(new TestHubResponse()))
+                    return new Promise<HubResponse>(resolve => resolve(new TestHubResponse()));
                 }
             };
         })
@@ -41,7 +41,7 @@ describe("Index tests", () => {
 
     beforeEach(() => {
         MockedPortRedirectionService.mockClear();
-        MockedCredentialManager.mockClear()
+        MockedCredentialManager.mockClear();
     });
 
     it("Should sign successfully", async () => {
@@ -49,7 +49,7 @@ describe("Index tests", () => {
         // set up in mocks
 
         //when
-        let hubResponse = await signPrescription("testJWT");
+        const hubResponse = await signPrescription("testJWT");
 
         //then
         expect(JSON.stringify(hubResponse)).toBe(
@@ -61,6 +61,6 @@ describe("Index tests", () => {
             "\"status_code\":0," +
             "\"status_string\":\"status_string\"," +
             "\"timestamp\":\"timestamp\"" +
-            "}")
+            "}");
     });
 });

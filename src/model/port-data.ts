@@ -1,5 +1,5 @@
 export class PortData {
-    portNumber: number
+    portNumber: number;
     constructor(portNumber: number) {
         this.portNumber = portNumber;
     }

@@ -5,7 +5,7 @@ export class TestSignature implements Signature {
     signature: string;
 
     constructor() {
-        this.id = "id"
-        this.signature = "signature"
+        this.id = "id";
+        this.signature = "signature";
     }
 }

@@ -1,7 +1,7 @@
 import {validateHubResponse} from "../../src/validation/response-validator";
 import {TestHubResponse} from "../model/test-hub-response";
 
-describe('Response Validator tests', () => {
+describe("Response Validator tests", () => {
 
     it("should throw TypeError when status code is not 0", () => {
         // given
@@ -12,9 +12,10 @@ describe('Response Validator tests', () => {
         try {
             validateHubResponse(hubResponse);
             fail("No error thrown");
-        } catch (e: any) {
+        } catch (e) {
             expect(e).toBeInstanceOf(TypeError);
-            expect(<TypeError>e.message).toBe("Error response from Credential Management.")
+            // @ts-expect-error We know e is a TypeError by this point in the test
+            expect(<TypeError>e.message).toBe("Error response from Credential Management.");
         }
     });
 
@@ -27,9 +28,10 @@ describe('Response Validator tests', () => {
         try {
             validateHubResponse(hubResponse);
             fail("No error thrown");
-        } catch (e: any) {
+        } catch (e) {
             expect(e).toBeInstanceOf(TypeError);
-            expect(<TypeError>e.message).toBe("Invalid response from Credential Management.")
+            // @ts-expect-error We know e is a TypeError by this point in the test
+            expect(<TypeError>e.message).toBe("Invalid response from Credential Management.");
         }
     });
 
@@ -42,9 +44,10 @@ describe('Response Validator tests', () => {
         try {
             validateHubResponse(hubResponse);
             fail("No error thrown");
-        } catch (e: any) {
+        } catch (e) {
             expect(e).toBeInstanceOf(TypeError);
-            expect(<TypeError>e.message).toBe("Invalid response from Credential Management.")
+            // @ts-expect-error We know e is a TypeError by this point in the test
+            expect(<TypeError>e.message).toBe("Invalid response from Credential Management.");
         }
     });
 

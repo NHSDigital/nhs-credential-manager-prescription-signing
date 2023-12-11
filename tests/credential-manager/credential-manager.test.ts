@@ -1,4 +1,4 @@
-import {expect, jest} from '@jest/globals';
+import {expect, jest} from "@jest/globals";
 import {CredentialManager} from "../../src/credential-manager/credential-manager";
 import {hubConnection} from "signalr-no-jquery";
 import {TestHubResponse} from "../model/test-hub-response";
@@ -13,20 +13,18 @@ describe("Credential Manager Tests", () => {
         const host: string = "localhost";
         const port: number = 123;
 
-        // @ts-ignore
-        let mockProxy = {
+        const mockProxy = {
             hubName: "test"
-        }
+        };
 
-        // @ts-ignore
-        let mockConnection = {
+        const mockConnection = {
             createHubProxy: jest.fn().mockReturnValue(mockProxy),
-            start: jest.fn((options: any, callback: () => void) => {
+            start: jest.fn((options, callback: () => void) => {
                 callback.call(null);
             })
-        }
+        };
 
-        // @ts-ignore
+        // @ts-expect-error We're not implementing everything within connection
         mockHubConnection.mockReturnValue(mockConnection);
 
         //when
@@ -46,21 +44,20 @@ describe("Credential Manager Tests", () => {
         const expected = new TestHubResponse();
 
         const invokeFn = jest.fn();
-        invokeFn.mockReturnValue(new Promise((resolve) => resolve(expected)))
+        invokeFn.mockReturnValue(new Promise((resolve) => resolve(expected)));
 
-        // @ts-ignore
-        let mockProxy = {
+        const mockProxy = {
             invoke: invokeFn
-        }
+        };
 
         const credentialManager = new CredentialManager(host, port);
-        // @ts-ignore
-        credentialManager['_signingHub'] = mockProxy;
+        // @ts-expect-error We're not implementing everything within proxy
+        credentialManager["_signingHub"] = mockProxy;
 
         //when
-        let output = credentialManager.signJwt(input);
+        const output = credentialManager.signJwt(input);
 
         //then
-        expect(output)
-    })
+        expect(output);
+    });
 });

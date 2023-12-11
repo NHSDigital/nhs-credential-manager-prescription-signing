@@ -5,10 +5,10 @@ import {HubResponse} from "./model/hub-response";
 
 
 export async function signPrescription(jwt: string): Promise<HubResponse> {
-    let rsp = await new PortRedirectionService().locateService();
+    const rsp = await new PortRedirectionService().locateService();
 
-    let credentialsManager = new CredentialManager(
-        'http://localhost',
+    const credentialsManager = new CredentialManager(
+        "http://localhost",
         rsp.portData.portNumber
     );
     await credentialsManager.initialise();

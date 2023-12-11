@@ -1,12 +1,12 @@
-import {Connection, hubConnection, Proxy} from 'signalr-no-jquery';
+import {Connection, hubConnection, Proxy} from "signalr-no-jquery";
 import {HubResponse} from "../model/hub-response";
 
 export class CredentialManager {
     private _connection: Connection;
     private _signingHub: Proxy;
 
-    private SIGNALR_HUB_NAME = "signingHub"
-    private SIGNALR_METHOD_NAME = "requestToSign"
+    private SIGNALR_HUB_NAME = "signingHub";
+    private SIGNALR_METHOD_NAME = "requestToSign";
 
     constructor(host: string, port: number) {
         this._connection = hubConnection(`${host}:${port}`);
@@ -15,7 +15,7 @@ export class CredentialManager {
 
     initialise() {
         return new Promise((res) =>
-            this._connection.start({transport: 'longPolling'}, () => res(null))
+            this._connection.start({transport: "longPolling"}, () => res(null))
         );
     }
 
