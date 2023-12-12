@@ -1,6 +1,6 @@
 name: Linting
 
-on: [create, push, pull_request]
+on: [ create, push, pull_request ]
 
 jobs:
   build:
@@ -13,5 +13,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+          cache: 'npm'
       - run: npm install
       - run: npx eslint *.ts
