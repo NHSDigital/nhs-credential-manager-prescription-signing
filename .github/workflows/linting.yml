@@ -14,5 +14,4 @@ jobs:
         with:
           node-version: '20.x'
       - run: npm install
-      - run: npx eslint src
-      - run: npx eslint tests
+      - run: npx eslint *.ts

@@ -55,9 +55,10 @@ describe("Credential Manager Tests", () => {
         credentialManager["_signingHub"] = mockProxy;
 
         //when
-        const output = credentialManager.signJwt(input);
+        const output = await credentialManager.signJwt(input);
 
         //then
-        expect(output);
+        expect(output).toBe(expected);
+        expect(invokeFn).toHaveBeenCalledWith("requestToSign", input);
     });
 });

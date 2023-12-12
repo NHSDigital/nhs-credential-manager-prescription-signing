@@ -7,15 +7,15 @@ import {HubResponse} from "../src/model/hub-response";
 import {TestHubResponse} from "./model/test-hub-response";
 import mocked = jest.mocked;
 
+const mockLocateService = jest.fn();
+const mockInitialise = jest.fn();
+const mockSign = jest.fn();
+
 jest.mock("../src/credential-manager/port-redirection-service", () => {
     return {
         PortRedirectionService: jest.fn().mockImplementation(() => {
             return {
-                locateService: () => {
-                    return new Promise(resolve => {
-                        resolve(new PortResponse(new PortData(123)));
-                    });
-                },
+                locateService: mockLocateService,
             };
         })
     };
@@ -24,43 +24,52 @@ jest.mock("../src/credential-manager/credential-manager", () => {
     return {
         CredentialManager: jest.fn().mockImplementation(() => {
             return {
-                initialise: () => {
-                    return new Promise<void>(resolve => resolve());
-                },
-                signJwt: () => {
-                    return new Promise<HubResponse>(resolve => resolve(new TestHubResponse()));
-                }
+                initialise: mockInitialise,
+                signJwt: mockSign
             };
         })
     };
 });
 
 describe("Index tests", () => {
-    const MockedPortRedirectionService = mocked(PortRedirectionService);
-    const MockedCredentialManager = mocked(CredentialManager);
+    const mockedPortRedirectionService = mocked(PortRedirectionService);
+    const mockedCredentialManager = mocked(CredentialManager);
 
     beforeEach(() => {
-        MockedPortRedirectionService.mockClear();
-        MockedCredentialManager.mockClear();
+        mockedPortRedirectionService.mockClear();
+        mockedCredentialManager.mockClear();
     });
 
     it("Should sign successfully", async () => {
         //given
-        // set up in mocks
+        const input = "testJWT";
+        const expectedResponse = new TestHubResponse();
+
+        mockLocateService.mockImplementation(() => {
+            return new Promise(resolve => {
+                resolve(new PortResponse(new PortData(123)));
+            });
+        });
+
+        mockInitialise.mockImplementation(() => {
+            return new Promise<void>(resolve => resolve());
+        });
+
+        mockSign.mockImplementation(() => {
+            return new Promise<HubResponse>(resolve => resolve(expectedResponse));
+        });
 
         //when
-        const hubResponse = await signPrescription("testJWT");
+        const hubResponse = await signPrescription(input);
 
         //then
-        expect(JSON.stringify(hubResponse)).toBe(
-            "{" +
-            "\"certificate\":\"certificate\"," +
-            "\"failed_signatures\":[]," +
-            "\"message\":\"message\"," +
-            "\"signatures\":[{\"id\":\"id\",\"signature\":\"signature\"}]," +
-            "\"status_code\":0," +
-            "\"status_string\":\"status_string\"," +
-            "\"timestamp\":\"timestamp\"" +
-            "}");
+        expect(hubResponse).toBe(expectedResponse);
+
+        expect(mockedPortRedirectionService.mock.calls.length).toBe(1);
+        expect(mockedCredentialManager.mock.calls.length).toBe(1);
+
+        expect(mockLocateService).toHaveBeenCalled();
+        expect(mockInitialise).toHaveBeenCalled();
+        expect(mockSign).toHaveBeenCalledWith(input);
     });
 });
