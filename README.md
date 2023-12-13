@@ -13,19 +13,48 @@ project.
 ADD TYPE STUFF HERE
 
 ## Usage
-
+All interactions come through the `signPrescription` method. Simply pass in your JSON Web Token (JWT).
 ```typescript
 import {signPrescription} from "nhs-credential-manager-prescription-signing";
 
-async function doSigning() {
+function doSigning() {
     // get your JWT
     let jwt = "some JWT";
     signPrescription(jwt)
-        .then(response => {
+        .then((response: HubResponse) => {
             // do something with the response
         })
         .error(error => {
             // handle errors
         });
+}
+```
+or alternatively
+
+```typescript
+import {signPrescription} from "nhs-credential-manager-prescription-signing";
+import {HubResponse} from "./hub-response";
+
+async function doSigning() {
+    // get your JWT
+    let jwt = "some JWT";
+    let response: HubResponse = await signPrescription(jwt);
+}
+```
+The response will be in the below format:
+```json
+{
+  "certificate": "certificate",
+  "failed_signatures": [],
+  "message": "message",
+  "signatures": [
+    {
+      "id": "id",
+      "signature": "signature"
+    }
+  ],
+  "status_code": 0,
+  "status_string": "status_string",
+  "timestamp": "timestamp"
 }
 ```
