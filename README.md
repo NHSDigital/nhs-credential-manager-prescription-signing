@@ -32,8 +32,7 @@ function doSigning() {
 or alternatively
 
 ```typescript
-import {signPrescription} from "nhs-credential-manager-prescription-signing";
-import {HubResponse} from "./hub-response";
+import {signPrescription, HubResponse} from "nhs-credential-manager-prescription-signing";
 
 async function doSigning() {
     // get your JWT
