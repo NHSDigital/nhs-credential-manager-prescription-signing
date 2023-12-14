@@ -1,4 +1,4 @@
-name: Linting
+name: Linting - React Example
 
 on: [ create, push, pull_request ]
 
