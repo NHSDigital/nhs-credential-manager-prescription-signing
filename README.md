@@ -1,4 +1,5 @@
 # NHS Credential Manager Prescription Signing (NCMPS)
+
 ![Build](https://github.com/NHSDigital/nhs-credential-manager-prescription-signing/actions/workflows/test-on-push.yml/badge.svg)
 ![Lint](https://github.com/NHSDigital/nhs-credential-manager-prescription-signing/actions/workflows/linting.yml/badge.svg)
 
@@ -13,7 +14,9 @@ project.
 ADD TYPE STUFF HERE
 
 ## Usage
+
 All interactions come through the `signPrescription` method. Simply pass in your JSON Web Token (JWT).
+
 ```typescript
 import {signPrescription} from "nhs-credential-manager-prescription-signing";
 
@@ -29,6 +32,7 @@ function doSigning() {
         });
 }
 ```
+
 or alternatively
 
 ```typescript
@@ -40,7 +44,9 @@ async function doSigning() {
     let response: HubResponse = await signPrescription(jwt);
 }
 ```
+
 The response will be in the below format:
+
 ```json
 {
   "certificate": "certificate",
@@ -57,3 +63,15 @@ The response will be in the below format:
   "timestamp": "timestamp"
 }
 ```
+
+## Examples
+![Build](https://github.com/NHSDigital/nhs-credential-manager-prescription-signing/actions/workflows/test-example-on-push.yml/badge.svg)
+![Lint](https://github.com/NHSDigital/nhs-credential-manager-prescription-signing/actions/workflows/linting-example.yml/badge.svg)
+
+A Next.js example project is available in `examples/react-example-webapp`. This provides a simple input field to paste a
+JWT and a button to sign. Any errors will be shown should the process fail. Feel free to use this to verify your CMS &
+Port Service installation. (Though the dev MSI of CMS will be required in order for it to allow connections from
+localhost)
+
+### Running
+From within the `examples/react-example-webapp` directory run `npm install` followed by `npm run dev`

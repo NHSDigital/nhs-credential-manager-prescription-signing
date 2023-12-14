@@ -1,0 +1,20 @@
+name: Linting
+
+on: [ create, push, pull_request ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+      - run: npm ci
+        working-directory: examples/react-example-webapp
+      - run: npx eslint *.ts
+        working-directory: examples/react-example-webapp
