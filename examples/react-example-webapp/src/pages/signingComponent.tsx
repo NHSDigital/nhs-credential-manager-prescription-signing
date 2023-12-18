@@ -5,7 +5,7 @@ export default function SigningComponent() {
 
     const [jwt, setJwt] = useState("");
     const [result, setResult] = useState("");
-    const [error, setError] = useState("")
+    const [error, setError] = useState("");
 
     function signJwt(jwt: string) {
         signPrescription(jwt).then(result => setResult(JSON.stringify(result))).catch(error => setError(error.message));
@@ -16,5 +16,5 @@ export default function SigningComponent() {
         <button onClick={() => signJwt(jwt)}>Submit</button>
         <div>{result}</div>
         <div>{error}</div>
-    </>
+    </>;
 }
