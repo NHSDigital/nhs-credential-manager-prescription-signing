@@ -15,4 +15,4 @@ jobs:
           node-version: '20.x'
           cache: 'npm'
       - run: npm ci
-      - run: npx eslint *.ts
+      - run: npm run lint
