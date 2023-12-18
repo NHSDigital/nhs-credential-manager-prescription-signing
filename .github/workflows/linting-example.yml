@@ -16,5 +16,5 @@ jobs:
           cache: 'npm'
       - run: npm ci
         working-directory: examples/react-example-webapp
-      - run: npx eslint *.ts
+      - run: npm run lint
         working-directory: examples/react-example-webapp
