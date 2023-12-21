@@ -26,7 +26,7 @@ jest.mock("../src/credential-manager/credential-manager", () => {
         CredentialManager: jest.fn().mockImplementation(() => {
             return {
                 initialise: mockInitialise,
-                signJwt: mockSign
+                signJson: mockSign
             };
         })
     };
@@ -77,7 +77,6 @@ describe("Index tests", () => {
     it("Should throw error on PRS failure", async () => {
         //given
         const input = "testJWT";
-        const expectedResponse = new TestHubResponse();
 
         mockLocateService.mockImplementation(() => {
             return new Promise(resolve => {

@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {signPrescription, HubResponse} from "../../../../dist";
+import {signPrescription, HubResponse} from "../../../../dist/index";
 
 export default function SigningComponent() {
 
@@ -8,7 +8,7 @@ export default function SigningComponent() {
     const [error, setError] = useState("");
 
     function signJwt(jwt: string) {
-        signPrescription(jwt).then(result => setResult(JSON.stringify(result,null,'\t'))).catch(e => {
+        signPrescription(jwt).then((result: HubResponse) => setResult(JSON.stringify(result,null,'\t'))).catch(e => {
             console.error(e)
             setError(e.message)
         });
