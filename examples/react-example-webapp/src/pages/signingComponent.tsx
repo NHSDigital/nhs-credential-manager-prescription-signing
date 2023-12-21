@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {signPrescription} from "../../../../dist/index";
+import {signPrescription, HubResponse} from "../../../../dist";
 
 export default function SigningComponent() {
 
@@ -8,13 +8,19 @@ export default function SigningComponent() {
     const [error, setError] = useState("");
 
     function signJwt(jwt: string) {
-        signPrescription(jwt).then(result => setResult(JSON.stringify(result))).catch(error => setError(error.message));
+        signPrescription(jwt).then(result => setResult(JSON.stringify(result,null,'\t'))).catch(e => {
+            console.error(e)
+            setError(e.message)
+        });
     }
 
     return <>
-        <input value={jwt} onChange={inputEvent => setJwt(inputEvent.target.value)}/>
+        <textarea value={jwt} onChange={inputEvent => setJwt(inputEvent.target.value)}/>
         <button onClick={() => signJwt(jwt)}>Submit</button>
-        <div>{result}</div>
+        <pre style={{
+            maxWidth: "80%",
+            overflow: "scroll"
+        }}>{result}</pre>
         <div>{error}</div>
     </>;
 }

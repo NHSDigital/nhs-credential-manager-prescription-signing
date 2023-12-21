@@ -6,7 +6,8 @@ import {HubResponse} from "./model/hub-response";
 
 export async function signPrescription(jwt: string): Promise<HubResponse> {
     const rsp = await new PortRedirectionService().locateService();
-    if (rsp.faultException !== undefined) {
+    if (rsp.faultException !== undefined && rsp.faultException !== null) {
+        console.error(rsp)
         throw new TypeError(`${rsp.faultException.code}: ${rsp.faultException.message}`)
     }
 
