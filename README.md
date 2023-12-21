@@ -89,10 +89,10 @@ The response will be in the below format:
 
 ## Examples
 
-A Next.js example project is available in `examples/react-example-webapp`. This provides a simple input field to paste a
-JWT and a button to sign. Any errors will be shown should the process fail. Feel free to use this to verify your CMS &
-Port Service installation. (Though the dev MSI of CMS will be required in order for it to allow connections from
-localhost)
+A Next.js example project is available in `examples/react-example-webapp`. This provides a simple input field to paste
+either a payload, unecoded json or encoded json and a button to sign. Any errors will be shown should the process fail.
+Feel free to use this to verify your CMS & Port Service installation. (Though the dev MSI of CMS will be required in
+order for it to allow connections from localhost)
 
 ### Running
 
@@ -104,9 +104,10 @@ From within the `examples/react-example-webapp` directory run `npm install` foll
 
 #### Error response from Credential Management.
 
-Check console for details. 
+Check console for details.
 
 Smartcard not inserted
+
 ```json 
 {
   "certificate": "",
@@ -118,7 +119,9 @@ Smartcard not inserted
   "timestamp": "2023-12-19T09:08:37.6560010Z"
 }
 ```
+
 Invalid JSON Payload - Check it's definitely Base64 encoded.
+
 ```json
 {
   "certificate": "",
@@ -130,9 +133,12 @@ Invalid JSON Payload - Check it's definitely Base64 encoded.
   "timestamp": "2023-12-19T09:24:43.3156582Z"
 }
 ```
+
 #### PR30007: Request failed due to unknown exception. Exception=Unable to find CM process for user
+
 Credential Manager is not running. Please ensure it is installed and started.
 
 #### All promises were rejected
+
 NHS Port Service is not running. This should be started with CM, so restart/reinstall CM to ensure this is running.
 
