@@ -9,17 +9,17 @@ export class CredentialManager {
     private SIGNALR_METHOD_NAME = "requestToSign";
 
     constructor(host: string, port: number) {
-        this._connection = hubConnection(`${host}:${port}`);
+        this._connection = hubConnection(`${host}:${port}`, {logging: true});
         this._signingHub = this._connection.createHubProxy(this.SIGNALR_HUB_NAME);
     }
 
     initialise() {
         return new Promise((res) =>
-            this._connection.start({transport: "longPolling"}, () => res(null))
+            this._connection.start({transport: "longPolling", contentType: "application/jwt"}, () => res(null))
         );
     }
 
-    async signJwt(jwt: string): Promise<HubResponse> {
-        return await this._signingHub.invoke(this.SIGNALR_METHOD_NAME, jwt);
+    async signJson(json: string): Promise<HubResponse> {
+        return await this._signingHub.invoke(this.SIGNALR_METHOD_NAME, json);
     }
 }
