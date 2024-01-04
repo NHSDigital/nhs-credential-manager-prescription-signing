@@ -34,7 +34,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "axios": "^1.6.3",
+    "axios": "^1.6.4",
     "axios-mock-adapter": "^1.22.0",
     "signalr-no-jquery": "^0.2.0"
   }
