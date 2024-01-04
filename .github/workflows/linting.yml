@@ -14,5 +14,5 @@ jobs:
         with:
           node-version: '20.x'
           cache: 'npm'
-      - run: npm install
+      - run: npm ci
       - run: npx eslint *.ts

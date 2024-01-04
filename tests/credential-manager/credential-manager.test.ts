@@ -55,7 +55,7 @@ describe("Credential Manager Tests", () => {
         credentialManager["_signingHub"] = mockProxy;
 
         //when
-        const output = await credentialManager.signJwt(input);
+        const output = await credentialManager.signJson(input);
 
         //then
         expect(output).toBe(expected);
