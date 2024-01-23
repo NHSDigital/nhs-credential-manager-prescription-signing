@@ -11,7 +11,7 @@ to sign prescriptions
 
 As NCMPS is hosted in NPM, a simple `npm install nhs-credential-manager-prescription-signing` will add this to your
 project.
-ADD TYPE STUFF HERE
+Alternatively checkout this repo and run `npm run build` and copy the generated `dist` directory into your project.
 
 ## Usage
 
@@ -142,3 +142,8 @@ Credential Manager is not running. Please ensure it is installed and started.
 
 NHS Port Service is not running. This should be started with CM, so restart/reinstall CM to ensure this is running.
 
+## Git Secrets Scanning
+This repo is scanned for secrets once a day on github.
+* Exclusions are contained in the file .gitallowed and includes false positives and well know details like public DNS servers
+* To run your own secret scan before you commit simply run ```docker build -f ./git-secrets/Dockerfile .``` in the root of this repo
+* It is planned to enforce secret scanning with rollback on push to GitHub in the future

@@ -1,0 +1,23 @@
+# gitallowed will have dodgy patterns in them to work
+/.gitallowed
+
+# external dependencies
+/node_modules
+*/.next/*
+
+# Ignore test-related files
+/coverage.data
+/coverage/
+
+# Build files
+/dist
+
+# IDE generated files
+.idea
+*.iml
+
+# images
+*.svg
+
+# False positives
+/nhsd-rules-deny.txt:10:.*

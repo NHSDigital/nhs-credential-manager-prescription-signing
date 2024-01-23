@@ -15,7 +15,7 @@ export class CredentialManager {
 
     initialise() {
         return new Promise((res) =>
-            this._connection.start({transport: "longPolling", contentType: "application/jwt"}, () => res(null))
+            this._connection.start({transport: "longPolling"}, () => res(null))
         );
     }
 
