@@ -118,7 +118,7 @@ if you are still having issues connecting.
 
 This repo is scanned for secrets once a day on github.
 
-* Exclusions are contained in the file .gitallowed and includes false positives and well know details like public DNS
+* Exclusions are contained in the file .gitallowed and includes false positives and well known details like public DNS
   servers
 * To run your own secret scan before you commit simply run ```docker build -f ./git-secrets/Dockerfile .``` in the root
   of this repo
