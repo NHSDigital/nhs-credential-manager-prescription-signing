@@ -101,50 +101,25 @@ From within the `examples/react-example-webapp` directory run `npm install` foll
 
 ## Troubleshooting
 
-### Common Errors
+| Error in console                                                                                                                                                                                                                                                                              | Meaning                                                                                                                                                   |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Error response from Credential Management.`                                                                                                                                                                                                                                                  | Communication with Credential Management has failed. This will be accompanied by the error from CM for debugging purposes.                                |
+| `Unable to locate a Smartcard on the local system that contains an appropriate X.509 Digital Certificate that can be used to perform a signing operation. Error Code: (0x53494705) No X.509 Signing certificate found`                                                                        | No smartcard inserted.                                                                                                                                    |
+| `Failed to process inbound JSON request. Check logs for futher information. Error Code: (0x53494703) An Internal error occurred`                                                                                                                                                              | Invalid JSON Payload - Check it's definitely Base64 encoded.                                                                                              |
+| `PR30007: Request failed due to unknown exception. Exception=Unable to find CM process for user`                                                                                                                                                                                              | Credential Manager is not running. Please ensure it is installed and started.                                                                             |
+| `All promises were rejected`                                                                                                                                                                                                                                                                  | NHS Port Service is not running. This should be started with CM, so restart/reinstall CM to ensure this is running.                                       |
+| `Access to XMLHttpRequest at 'http://localhost:43487/PRS/ConnectPRService' from origin 'https://your-url.com' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource` | Your application is not on the production Credential Management allowlist. Either switch to the development version or request your application is added. |
 
-#### Error response from Credential Management.
-
-Check console for details.
-
-Smartcard not inserted
-
-```json 
-{
-  "certificate": "",
-  "signatures": null,
-  "failed_signatures": null,
-  "status_code": 1397311237,
-  "status_string": "ERROR",
-  "message": "Unable to locate a Smartcard on the local system that contains an appropriate X.509 Digital Certificate that can be used to perform a signing operation. Error Code: (0x53494705) No X.509 Signing certificate found",
-  "timestamp": "2023-12-19T09:08:37.6560010Z"
-}
-```
-
-Invalid JSON Payload - Check it's definitely Base64 encoded.
-
-```json
-{
-  "certificate": "",
-  "signatures": null,
-  "failed_signatures": null,
-  "status_code": 1397311235,
-  "status_string": "ERROR",
-  "message": "Failed to process inbound JSON request. Check logs for futher information. Error Code: (0x53494703) An Internal error occurred",
-  "timestamp": "2023-12-19T09:24:43.3156582Z"
-}
-```
-
-#### PR30007: Request failed due to unknown exception. Exception=Unable to find CM process for user
-
-Credential Manager is not running. Please ensure it is installed and started.
-
-#### All promises were rejected
-
-NHS Port Service is not running. This should be started with CM, so restart/reinstall CM to ensure this is running.
+Please also check the Credential
+Management [documentation](https://digital.nhs.uk/services/care-identity-service/applications-and-services/technical-services/credential-management)
+if you are still having issues connecting.
 
 ## Git Secrets Scanning
+
 This repo is scanned for secrets once a day on github.
-* Exclusions are contained in the file .gitallowed and includes false positives and well know details like public DNS servers
-* To run your own secret scan before you commit simply run ```docker build -f ./git-secrets/Dockerfile .``` in the root of this repo
+
+* Exclusions are contained in the file .gitallowed and includes false positives and well know details like public DNS
+  servers
+* To run your own secret scan before you commit simply run ```docker build -f ./git-secrets/Dockerfile .``` in the root
+  of this repo
 * It is planned to enforce secret scanning with rollback on push to GitHub in the future
