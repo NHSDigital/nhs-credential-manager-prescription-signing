@@ -3,6 +3,7 @@
 ![Build](https://github.com/NHSDigital/nhs-credential-manager-prescription-signing/actions/workflows/test-on-push.yml/badge.svg)
 ![Lint](https://github.com/NHSDigital/nhs-credential-manager-prescription-signing/actions/workflows/linting.yml/badge.svg)
 ![Secrets Scan](https://github.com/NHSDigital/nhs-credential-manager-prescription-signing/actions/workflows/scan-secrets-on-push.yml/badge.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=NHSDigital_nhs-credential-manager-prescription-signing&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=NHSDigital_nhs-credential-manager-prescription-signing)
 
 This is a library to integrate with a locally
 running [NHS Credential Management](https://digital.nhs.uk/services/care-identity-service/applications-and-services/technical-services/credential-management)
