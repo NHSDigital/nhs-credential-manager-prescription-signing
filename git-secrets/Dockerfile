@@ -17,7 +17,7 @@
 #
 ##################################################################################
 
-FROM ubuntu:jammy
+FROM ubuntu:latest
 
 RUN echo "Installing required modules"
 RUN apt-get update && apt-get --no-install-recommends install -y curl git build-essential && apt-get clean
