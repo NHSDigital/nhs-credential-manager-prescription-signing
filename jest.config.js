@@ -1,7 +1,7 @@
 module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.ts'],
-  coverageReporters: ["json", "html"],
+  coverageReporters: ["json", "html", "lcov"],
   coverageThreshold: {
     global: {
       branches: 100,
