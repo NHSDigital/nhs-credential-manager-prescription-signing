@@ -14,9 +14,6 @@ jobs:
           path: ./
           format: cyclonedx-json
           artifact-name: sbom-repo.cdx.json
-  scan-vulnerabilities:
-    runs-on: ubuntu-latest
-    steps:
       - uses: anchore/scan-action@v3
         with:
           sbom: sbom-repo.cdx.json
