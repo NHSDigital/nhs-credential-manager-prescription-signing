@@ -9,14 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: anchore/sbom-action@v0
+      - name: Create SBOM
+        uses: anchore/sbom-action@v0
         with:
-          path: ./
-          format: cyclonedx-json
-          artifact-name: sbom-repo.cdx.json
-      - uses: anchore/scan-action@v3
+          format: spdx-json
+          output-file: "sbom.spdx.json"
+      - name: Scan SBOM
+        uses: anchore/scan-action@v3
         with:
-          sbom: sbom-repo.cdx.json
-          fail-build: true
-          severity-cutoff: critical
-          acs-report-enable: true
+          sbom: "sbom.spdx.json"
