@@ -3,10 +3,9 @@ import {PortRedirectionService} from "../src/credential-manager/port-redirection
 import {CredentialManager} from "../src/credential-manager/credential-manager";
 import {PortResponse} from "../src/model/port-response";
 import {PortData} from "../src/model/port-data";
-import {HubResponse} from "../src/model/hub-response";
 import {TestHubResponse} from "./model/test-hub-response";
-import mocked = jest.mocked;
 import {FaultException} from "../src/model/fault-exception";
+import mocked = jest.mocked;
 
 const mockLocateService = jest.fn();
 const mockInitialise = jest.fn();
@@ -47,9 +46,7 @@ describe("Index tests", () => {
         const expectedResponse = new TestHubResponse();
 
         mockLocateService.mockImplementation(() => {
-            return new Promise(resolve => {
-                resolve(new PortResponse(new PortData(123), undefined));
-            });
+            return Promise.resolve(new PortResponse(new PortData(123), undefined));
         });
 
         mockInitialise.mockImplementation(() => {
@@ -57,7 +54,7 @@ describe("Index tests", () => {
         });
 
         mockSign.mockImplementation(() => {
-            return new Promise<HubResponse>(resolve => resolve(expectedResponse));
+            return Promise.resolve(expectedResponse);
         });
 
         //when
@@ -79,16 +76,14 @@ describe("Index tests", () => {
         const input = "testJWT";
 
         mockLocateService.mockImplementation(() => {
-            return new Promise(resolve => {
-                resolve(new PortResponse(new PortData(123), new FaultException("123", "Oops, all gone wrong!")));
-            });
+            return Promise.resolve(new PortResponse(new PortData(123), new FaultException("123", "Oops, all gone wrong!")));
         });
 
         //when
         try {
             await signPrescription(input);
             //then
-            fail("Expected and error to occur")
+            fail("Expected and error to occur");
         } catch (e) {
             expect(e).toBeInstanceOf(TypeError);
             // @ts-expect-error We know e is a TypeError by this point in the test
