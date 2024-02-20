@@ -20,7 +20,7 @@ describe("Credential Manager Tests", () => {
         const mockConnection = {
             createHubProxy: jest.fn().mockReturnValue(mockProxy),
             start: jest.fn((options, callback: () => void) => {
-                callback.call(null);
+                callback();
             })
         };
 
@@ -44,7 +44,7 @@ describe("Credential Manager Tests", () => {
         const expected = new TestHubResponse();
 
         const invokeFn = jest.fn();
-        invokeFn.mockReturnValue(new Promise((resolve) => resolve(expected)));
+        invokeFn.mockReturnValue(Promise.resolve(expected));
 
         const mockProxy = {
             invoke: invokeFn

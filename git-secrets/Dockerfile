@@ -20,8 +20,7 @@
 FROM ubuntu:latest
 
 RUN echo "Installing required modules"
-RUN apt-get update
-RUN apt-get -y install curl git build-essential
+RUN apt-get update && apt-get -y install curl git build-essential && apt-get clean
 
 # By default, we copy the entire project into the dockerfile for secret scanning
 # Tweak that COPY if you only want some of the source
