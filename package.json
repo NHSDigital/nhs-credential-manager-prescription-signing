@@ -1,7 +1,7 @@
 {
   "name": "nhs-credential-manager-prescription-signing",
   "version": "1.0.0",
-  "description": "Utility for signing prescriptions using NHS Credential Manager",
+  "description": "Utility for signing prescriptions using NHS Credential Management",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -19,7 +19,7 @@
     "prescription signing"
   ],
   "author": "NHS England",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/signalr-no-jquery": "^0.1.6",
