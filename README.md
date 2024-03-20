@@ -91,14 +91,20 @@ The response will be in the below format:
 
 ## Examples
 
-A Next.js example project is available in `examples/react-example-webapp`. This provides a simple input field to paste
+A variety of example projects are available in the `examples` directory. These provide a simple input field to paste
 either a payload, unecoded json or encoded json and a button to sign. Any errors will be shown should the process fail.
-Feel free to use this to verify your CMS & Port Service installation. (Though the dev MSI of CMS will be required in
+Feel free to use these to verify your CMS & Port Service installation. (Though the dev MSI of CMS will be required in
 order for it to allow connections from localhost)
 
 ### Running
 
+#### NextJs/React
+
 From within the `examples/react-example-webapp` directory run `npm install` followed by `npm run dev`
+
+#### Vue
+
+From within the `examples/vue-js-example` directory run `npm install` followed by `npm run dev`
 
 ## Troubleshooting
 

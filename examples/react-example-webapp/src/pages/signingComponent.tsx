@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {signPrescription, HubResponse} from "../../../../dist/index";
+import {signPrescription, HubResponse} from "nhs-credential-manager-prescription-signing";
 import {Base64} from "js-base64";
 
 export default function SigningComponent() {
