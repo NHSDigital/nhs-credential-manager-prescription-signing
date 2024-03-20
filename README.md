@@ -104,7 +104,7 @@ From within the `examples/react-example-webapp` directory run `npm install` foll
 
 #### Vue
 
-From within the `examples/vue-js-example` directory run `npm install` followed by `npm run dev`
+From within the `examples/vue-js-example-webapp` directory run `npm install` followed by `npm run dev`
 
 ## Troubleshooting
 
