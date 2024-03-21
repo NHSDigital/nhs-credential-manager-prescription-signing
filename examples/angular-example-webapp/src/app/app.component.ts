@@ -52,6 +52,8 @@ export class AppComponent {
     }
 
     signJson() {
+        this.result = '';
+        this.errorMessage = '';
         signPrescription(this.base64Json).then((result: HubResponse) => this.result = JSON.stringify(result, null, "\t")).catch(e => {
             console.error(e);
             this.errorMessage = e.message;

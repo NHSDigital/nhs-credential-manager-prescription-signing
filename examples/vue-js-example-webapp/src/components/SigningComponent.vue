@@ -44,6 +44,8 @@ function base64Change(event) {
 }
 
 function signJson() {
+  state.result = '';
+  state.errorMessage = '';
   signPrescription(state.base64Json).then((result) => state.result = JSON.stringify(result, null, "\t")).catch(e => {
     console.error(e);
     state.errorMessage = e.message;
@@ -83,6 +85,6 @@ function signJson() {
     <button @click="signJson">Submit</button>
   </div>
 
-  <div>{{ state.result }}</div>
+  <code>{{ state.result }}</code>
   <div>{{ state.errorMessage }}</div>
 </template>
