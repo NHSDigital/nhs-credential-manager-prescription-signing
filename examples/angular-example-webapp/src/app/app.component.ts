@@ -3,13 +3,14 @@ import {RouterOutlet} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {Base64} from "js-base64";
 import {HubResponse, signPrescription} from "nhs-credential-manager-prescription-signing";
+import {NgIf} from "@angular/common";
 
 @Component({
     selector: "app-root",
     standalone: true,
-    imports: [RouterOutlet, FormsModule],
+    imports: [RouterOutlet, FormsModule, NgIf],
     templateUrl: "./app.component.html",
-    styleUrl: "./app.component.css"
+    styleUrl: "./app.component.scss"
 })
 export class AppComponent {
     initialJson = {

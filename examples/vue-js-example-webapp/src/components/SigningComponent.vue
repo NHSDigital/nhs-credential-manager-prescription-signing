@@ -54,37 +54,47 @@ function signJson() {
 </script>
 
 <template>
-  <div>
-    <div>
-      <label for="payload">Payload:</label>
-    </div>
-    <div>
-      <input id="payload" v-model="state.payload" @change="payloadChange"/>
-    </div>
-  </div>
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="payload">Payload:</label>
+        <input id="payload" class="nhsuk-input" v-model="state.payload" @change="payloadChange"/>
+      </div>
 
-  <div>
-    <div>
-      <label for="json">JSON:</label>
-    </div>
-    <div>
-      <textarea id="json" v-model="state.json" @change="jsonChange"/>
-    </div>
-  </div>
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="json">
+          JSON:
+        </label>
+        <textarea class="nhsuk-textarea" id="json" name="example" rows="12" aria-describedby="example-hint"
+                  v-model="state.json" @change="jsonChange"></textarea>
+      </div>
 
-  <div>
-    <div>
-      <label for="base64Json">Base64 Encoded JSON:</label>
-    </div>
-    <div>
-      <textarea id="base64Json" v-model="state.base64Json" @change="base64Change"/>
-    </div>
-  </div>
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="base64Json">
+          Base64 Encoded JSON:
+        </label>
+        <textarea class="nhsuk-textarea" id="base64Json" name="example" rows="5" aria-describedby="example-hint"
+                  v-model="state.base64Json" @change="base64Change"></textarea>
+      </div>
 
-  <div>
-    <button @click="signJson">Submit</button>
-  </div>
+      <div>
+        <button class="nhsuk-button" data-module="nhsuk-button" type="submit" @click="signJson">Submit</button>
+      </div>
 
-  <code>{{ state.result }}</code>
-  <div>{{ state.errorMessage }}</div>
+      <div class="nhsuk-warning-callout" v-if="state.result.length > 0">
+        <h3 class="nhsuk-warning-callout__label">
+                <span role="text">
+                  <span class="nhsuk-u-visually-hidden">Important: </span>
+                  Result
+                </span>
+        </h3>
+        <pre>{{ state.result }}</pre>
+      </div>
+      <div class="nhsuk-warning-callout" v-if="state.errorMessage.length > 0">
+        <h3 class="nhsuk-warning-callout__label">
+                <span role="text">
+                  <span class="nhsuk-u-visually-hidden">Important: </span>
+                  Error
+                </span>
+        </h3>
+        <p>{{ state.errorMessage }}</p>
+      </div>
 </template>
