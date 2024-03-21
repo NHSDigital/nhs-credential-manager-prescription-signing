@@ -57,7 +57,7 @@ function signJson() {
       <label for="payload">Payload:</label>
     </div>
     <div>
-      <input name="payload" v-model="state.payload" @change="payloadChange"/>
+      <input id="payload" v-model="state.payload" @change="payloadChange"/>
     </div>
   </div>
 
@@ -66,7 +66,7 @@ function signJson() {
       <label for="json">JSON:</label>
     </div>
     <div>
-      <textarea name="json" v-model="state.json" @change="jsonChange"/>
+      <textarea id="json" v-model="state.json" @change="jsonChange"/>
     </div>
   </div>
 
@@ -75,7 +75,7 @@ function signJson() {
       <label for="base64Json">Base64 Encoded JSON:</label>
     </div>
     <div>
-      <textarea name="base64Json" v-model="state.base64Json" @change="base64Change"/>
+      <textarea id="base64Json" v-model="state.base64Json" @change="base64Change"/>
     </div>
   </div>
 

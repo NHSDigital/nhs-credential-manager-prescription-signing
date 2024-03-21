@@ -98,13 +98,19 @@ order for it to allow connections from localhost)
 
 ### Running
 
+#### Angular
+
+First install the Angular CI if it is not already installed - `npm install -g @angular/cli`.
+
+From within the `examples/angular-example-webapp` directory run `npm install` followed by `npm run start`. Then navigate to http://localhost:4200.
+
 #### NextJs/React
 
-From within the `examples/react-example-webapp` directory run `npm install` followed by `npm run dev`
+From within the `examples/react-example-webapp` directory run `npm install` followed by `npm run dev`. Then navigate to http://localhost:3000.
 
 #### Vue
 
-From within the `examples/vue-js-example-webapp` directory run `npm install` followed by `npm run dev`
+From within the `examples/vue-js-example-webapp` directory run `npm install` followed by `npm run dev`. Then navigate to http://localhost:5173.
 
 ## Troubleshooting
 

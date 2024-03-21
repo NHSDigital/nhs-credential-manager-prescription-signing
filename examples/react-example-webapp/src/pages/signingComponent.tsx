@@ -32,7 +32,7 @@ export default function SigningComponent() {
 
     return <>
         <label htmlFor={"payload"}>Payload:</label>
-        <input name={"payload"} value={payload} onChange={inputEvent => {
+        <input id={"payload"} value={payload} onChange={inputEvent => {
             setPayload(inputEvent.target.value);
             let intermediateJson = initialJson;
             intermediateJson.payloads[0].payload = inputEvent.target.value;
@@ -40,13 +40,13 @@ export default function SigningComponent() {
             setBase64Json(Base64.encode(JSON.stringify(intermediateJson)));
         }}/>
         <label htmlFor={"json"}>JSON:</label>
-        <textarea name={"json"} value={json} onChange={inputEvent => {
+        <textarea id={"json"} value={json} onChange={inputEvent => {
             setJson(inputEvent.target.value);
             setBase64Json(Base64.encode(JSON.stringify(inputEvent.target.value, null, '\t')));
             setPayload(JSON.parse(inputEvent.target.value).payloads[0].payload);
         }}/>
         <label htmlFor={"base64Json"}>Base64 Encoded JSON:</label>
-        <textarea name={"base64Json"} value={base64Json} onChange={inputEvent => {
+        <textarea id={"base64Json"} value={base64Json} onChange={inputEvent => {
             setBase64Json(inputEvent.target.value);
             setJson(Base64.decode(inputEvent.target.value));
             setPayload(JSON.parse(Base64.decode(inputEvent.target.value)).payloads[0].payload);

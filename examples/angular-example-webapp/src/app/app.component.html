@@ -1,0 +1,40 @@
+<main class="main">
+  <div class="content">
+    <div>
+      <div>
+        <label for="payload">Payload:</label>
+      </div>
+      <div>
+        <input id="payload" [ngModel]="payload" (ngModelChange)="payloadChange($event)"/>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <label for="json">JSON:</label>
+      </div>
+      <div>
+        <textarea id="json" [ngModel]="json" (ngModelChange)="jsonChange($event)"></textarea>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <label for="base64Json">Base64 Encoded JSON:</label>
+      </div>
+      <div>
+        <textarea id="base64Json" [ngModel]="base64Json" (ngModelChange)="base64Change($event)"></textarea>
+      </div>
+    </div>
+
+    <div>
+      <button (click)="signJson()">Submit</button>
+    </div>
+
+    <div>{{ result }}</div>
+    <div>{{ errorMessage }}</div>
+  </div>
+</main>
+
+
+<router-outlet/>
