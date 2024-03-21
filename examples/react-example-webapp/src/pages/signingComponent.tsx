@@ -19,7 +19,7 @@ export default function SigningComponent() {
 
     const [payload, setPayload] = useState("");
     const [json, setJson] = useState(JSON.stringify(initialJson, null, "\t"));
-    const [base64Json, setBase64Json] = useState("");
+    const [base64Json, setBase64Json] = useState(Base64.encode(JSON.stringify(initialJson)));
     const [result, setResult] = useState("");
     const [error, setError] = useState("");
 
