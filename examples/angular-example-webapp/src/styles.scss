@@ -1,2 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/nhsuk-frontend/packages/nhsuk';
+
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
