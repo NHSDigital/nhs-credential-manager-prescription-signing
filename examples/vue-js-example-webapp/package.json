@@ -1,0 +1,21 @@
+{
+  "name": "vue-js-example",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "js-base64": "^3.7.5",
+    "nhs-credential-manager-prescription-signing": "^1.0.4",
+    "nhsuk-frontend": "^8.1.1",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.72.0",
+    "sass-loader": "^14.1.1",
+    "vite": "^5.1.6"
+  }
+}

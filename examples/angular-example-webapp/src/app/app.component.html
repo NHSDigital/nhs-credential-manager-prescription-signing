@@ -1,0 +1,50 @@
+<main class="main">
+    <div class="content">
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="payload">Payload:</label>
+            <input id="payload" class="nhsuk-input" [ngModel]="payload" (ngModelChange)="payloadChange($event)"/>
+        </div>
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="json">
+                JSON:
+            </label>
+            <textarea class="nhsuk-textarea" id="json" name="example" rows="12" aria-describedby="example-hint"
+                      [ngModel]="json" (ngModelChange)="jsonChange($event)"></textarea>
+        </div>
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="base64Json">
+                Base64 Encoded JSON:
+            </label>
+            <textarea class="nhsuk-textarea" id="base64Json" name="example" rows="5" aria-describedby="example-hint"
+                      [ngModel]="base64Json" (ngModelChange)="base64Change($event)"></textarea>
+        </div>
+
+        <div>
+            <button class="nhsuk-button" data-module="nhsuk-button" type="submit" (click)="signJson()">Submit</button>
+        </div>
+
+        <div class="nhsuk-warning-callout" *ngIf="result.length > 0">
+            <h3 class="nhsuk-warning-callout__label">
+                <span role="text">
+                  <span class="nhsuk-u-visually-hidden">Important: </span>
+                  Result
+                </span>
+            </h3>
+            <pre>{{ result }}</pre>
+        </div>
+        <div class="nhsuk-warning-callout" *ngIf="errorMessage.length > 0">
+            <h3 class="nhsuk-warning-callout__label">
+                <span role="text">
+                  <span class="nhsuk-u-visually-hidden">Important: </span>
+                  Error
+                </span>
+            </h3>
+            <p>{{ errorMessage }}</p>
+        </div>
+    </div>
+</main>
+
+
+<router-outlet/>
